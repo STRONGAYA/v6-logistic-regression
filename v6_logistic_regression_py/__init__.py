@@ -101,8 +101,15 @@ def master(
 
     info("Federated training completed.")
 
+    # TODO remove workaround for algorithm store table
+    model = export_model(global_model, MODEL_ATTRIBUTE_KEYS)
+    df = pd.DataFrame({
+        'predictor': predictors,
+        'coefficient': np.array(model['coef_']).flatten()
+    })
     return {
-        'model_attributes': export_model(global_model, MODEL_ATTRIBUTE_KEYS),
+        'model': df.to_json(),
+        'model_attributes': model,
         'loss': loss,
         'iteration': iteration
     }
