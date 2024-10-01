@@ -1,0 +1,67 @@
+{
+  "vantage6_version": "4.3",
+  "functions": [
+    {
+      "databases": [
+        {
+          "description": "Database to perform the logistic regression analysis on.",
+          "name": "Database"
+        }
+      ],
+      "description": "Orchestrates federated logistic regression training across nodes.",
+      "name": "master",
+      "arguments": [
+        {
+          "type": "string_list",
+          "description": "Variables to be used as predictors.",
+          "name": "predictors"
+        },
+        {
+          "type": "string",
+          "description": "Dichotomous variable to be used as target variable.",
+          "name": "outcome"
+        },
+        {
+          "type": "string_list",
+          "description": "List of class labels.",
+          "name": "classes"
+        },
+        {
+          "type": "integer",
+          "description": "Maximum number of iterations for convergence.",
+          "name": "max_iter"
+        },
+        {
+          "type": "float",
+          "description": "Convergence threshold based on loss difference.",
+          "name": "delta"
+        },
+        {
+          "type": "organization_list",
+          "description": "Specific organization IDs to involve in computation.",
+          "name": "org_ids"
+        }
+      ],
+      "type": "central",
+      "ui_visualizations": [
+        {
+          "description": "The main result of the logistic regression model.",
+          "schema": {
+            "location": [
+              "model"
+            ],
+            "columns": []
+          },
+          "name": "Logistic regression model",
+          "type": "table"
+        }
+      ]
+    }
+  ],
+  "partitioning": "horizontal",
+  "code_url": "https://github.com/STRONGAYA/v6-logistic-regression",
+  "description": "Model the relationship between a dependent dichotomous variable and one or more independent variables.",
+  "name": "Logistic regression",
+  "documentation_url": "",
+  "image": "ghcr.io/strongaya/v6-logistic-regression:0.0.1"
+}
